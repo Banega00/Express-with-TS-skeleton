@@ -10,3 +10,4 @@ dev dependencies
 --save-dev === -D
 npm i -D @types/express 
 npm i -D @types/node
+npm i -D @types/body-parser

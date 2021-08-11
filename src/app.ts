@@ -1,5 +1,6 @@
 import { json } from "body-parser";
 import * as express from "express";
+import * as router from "./router/router";
 import { validateRequestPayload } from "./utils/validation/validator";
 import { sendInvalidMethodResponse } from "./utils/wrappers/response-wrapper";
 
@@ -7,9 +8,11 @@ const app: express.Application = express();
 
 app.use(json({limit: "50mb", type: "application/json"}));
 
+//Middleware for validating requests payload
 app.use(validateRequestPayload);
 
 //Set routers
+app.use('/', router.ExampleRouter)
 // app.use('/operation', routers.OperationsRouter);
 // app.use('/internal', routers.InternalRouter);
 // app.use('/report', routers.ReportsRouter);

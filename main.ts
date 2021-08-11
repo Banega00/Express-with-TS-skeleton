@@ -1,3 +1,4 @@
+//dotenv - API for reading .env files
 import { config } from "dotenv";
 config();
 
@@ -12,7 +13,7 @@ import app from "./src/app";
         const PORT = env.port;
         
         //Connecting with database
-        // await createConnection();
+        //await createConnection();
 
         //Starting server
         app.listen(PORT);
@@ -23,7 +24,3 @@ import app from "./src/app";
     }
 
 })();
-
-function createServer(app: any) {
-    throw new Error("Function not implemented.");
-}
