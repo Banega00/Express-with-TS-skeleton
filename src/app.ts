@@ -1,5 +1,5 @@
 import { json } from "body-parser";
-import * as express from "express";
+import express from "express";
 import * as router from "./router/router";
 import { validateRequestPayload } from "./utils/validation/validator";
 import { sendInvalidMethodResponse } from "./utils/wrappers/response-wrapper";
