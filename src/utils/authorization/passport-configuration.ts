@@ -47,12 +47,10 @@ export const configurePassport = (app:Application, passport: PassportStatic) => 
     
 
     //3.
-    //TODO
     passport.serializeUser(function(user:any, done:Function) {
         done(null, user.id);
     });
     
-    //TODO
     passport.deserializeUser(function(id:number, done:Function) {
         try{
             const user = UserRepository.getInstance().findById(id);
