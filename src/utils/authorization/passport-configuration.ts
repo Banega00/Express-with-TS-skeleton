@@ -64,19 +64,19 @@ export const configurePassport = (app:Application, passport: PassportStatic) => 
 
     //4.
     //login route - calling custom callbaback
-    app.post('/login', (request, res, next) =>{
+    app.post('/login', (request:Request, response:Response, next) =>{
         passport.authenticate('local', (error:any, user: User, info:any) =>{
-          if(error) return sendResponse(res, 401, ErrorStatusCode.Failure, error); //if server error occured
-          if(!user) return sendResponse(res, 401, ErrorStatusCode.Failure, info); //custom message
+          if(error) return sendResponse(response, 401, ErrorStatusCode.Failure, error); //if server error occured
+          if(!user) return sendResponse(response, 401, ErrorStatusCode.Failure, info); //custom message
           else {
 
             //Because of custom callback we have responsibility to establish an express-session by calling request.login
             request.logIn(user, function(error) {
-                if (error) return sendResponse(res, 401, ErrorStatusCode.Failure, error); 
-                return sendResponse(res, 200, SuccessStatusCode.Success); 
+                if (error) return sendResponse(response, 401, ErrorStatusCode.Failure, error); 
+                return sendResponse(response, 200, SuccessStatusCode.Success); 
               });
           }
-        })(request,res,next);//IIFE - immediately invoked function expression
+        })(request,response,next);//IIFE - immediately invoked function expression
     })
 }
 

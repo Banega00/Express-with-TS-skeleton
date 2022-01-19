@@ -1,10 +1,11 @@
 import { configurePassport } from './utils/authorization/passport-configuration';
 import { json } from "body-parser";
-import express, {Application} from "express";
+import express, {Application, Request, Response} from "express";
 import passport from "passport";
 import * as router from "./router/router";
 import { validateRequestPayload } from "./utils/validation/validator";
-import { sendInvalidMethodResponse } from "./utils/wrappers/response-wrapper";
+import { sendInvalidMethodResponse, sendResponse } from "./utils/wrappers/response-wrapper";
+import { SuccessStatusCode } from './utils/status-codes';
 
 const app: Application = express();
 
@@ -15,6 +16,11 @@ app.use(validateRequestPayload);
 
 //Configure passport
 configurePassport(app, passport);
+
+app.use('/test', (request: Request, response: Response) =>{
+    console.log(request.session)
+    sendResponse(response, 200, SuccessStatusCode.Success);
+})
 
 //Set routers
 app.use('/', router.ExampleRouter)
