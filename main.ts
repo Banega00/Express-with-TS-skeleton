@@ -4,23 +4,21 @@ config();
 
 import { env } from './src/utils/wrappers/env-wrapper';
 import app from "./src/app";
-
-
+import { createConnection } from "typeorm";
 
 (async function main(): Promise<void> {
+  try {
+    const PORT = env.port;
 
-    try {
-        const PORT = env.port;
-        
-        //Connecting with database
-        //await createConnection();
+    //Connecting with database
+    await createConnection();
+    console.log(`Successfully connected to database`);
 
-        //Starting server
-        app.listen(PORT);
-        console.log(`Server is listening on port ${PORT} 🔥🔥🔥`)
-    } catch (error) {
-        console.log(error);
-        process.exit(-1);
-    }
-
+    //Starting server
+    app.listen(PORT);
+    console.log(`Server is listening on port ${PORT} 🔥🔥🔥`);
+  } catch (error) {
+    console.log(error);
+    process.exit(-1);
+  }
 })();
