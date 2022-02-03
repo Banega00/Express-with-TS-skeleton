@@ -1,4 +1,6 @@
 import { User as UserEntity } from './../entities/user.entity';
+import bcrypt from "bcrypt" 
+
 export interface IUser {
   id?: number;
   username?: string;
@@ -35,6 +37,12 @@ export class User {
   }
   public set password(value: string) {
     this._password = value;
+  }
+
+
+  public async hashPassword(){
+    const salt = await bcrypt.genSalt();
+    this.password = await bcrypt.hash(this.password, salt);
   }
 
   public toEntity():UserEntity{

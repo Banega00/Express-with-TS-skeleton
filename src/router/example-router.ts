@@ -1,8 +1,8 @@
-import { ExampleController } from './../api/example-controller';
+import { UserController } from './../api/user.controller';
 import { Router } from "express";
 
 const router = Router()
 
-router.post('/user', ExampleController.insertNewUser)
+router.post('/user', UserController.insertNewUser)
 
 export const ExampleRouter = router;

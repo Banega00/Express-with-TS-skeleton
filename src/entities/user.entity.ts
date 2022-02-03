@@ -1,7 +1,6 @@
 import { User as UserModel } from './../models/user.model';
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 import { IUser } from "../models/user.model";
-
 @Entity() //Entitiy is database representation of domain class
 export class User {
   @PrimaryGeneratedColumn()
@@ -21,6 +20,6 @@ export class User {
   }
 
   public toModel():UserModel{
-    return new UserModel({id:this.id, username:this.username, password: this.password})
+    return new UserModel({id:this.id, username:this.username, password: ""})//password is ommited!
   }
 }
