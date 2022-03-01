@@ -8,7 +8,7 @@ import ExpressSession from 'express-session';
 import { PassportStatic } from 'passport';
 
 //1. Setup Strategy - determines how is login request handled
-//2. Setup Express-session, and initialize passport and passport session
+//2. Setup Express - session, and initialize passport and passport session
 //3. Define serializeUser and deserializeUser
 //4. Define login route - and call passport.authenticate
 //5. Make checkAuthenticated middleware that check if user is logged in

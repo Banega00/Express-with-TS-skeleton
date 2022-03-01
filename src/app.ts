@@ -1,4 +1,4 @@
-import { configurePassport } from './utils/authorization/passport-configuration';
+import { checkAuthenticated, configurePassport } from './utils/authorization/passport-configuration';
 import { json } from "body-parser";
 import express, {Application, Request, Response} from "express";
 import passport from "passport";
