@@ -20,7 +20,7 @@ export const configurePassport = (app:Application, passport: PassportStatic) => 
             usernameField: 'username',
             passwordField: 'password'
         },
-        //username and password are default credentials fomr LocalStrategy
+        //username and password are default credentials from LocalStrategy
         function(username, password, done) {
     
           const user = UserRepository.getInstance().findByUsername(username);
