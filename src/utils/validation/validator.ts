@@ -20,7 +20,7 @@ export async function validateRequestPayload(request: Request, response: Respons
 
         next();
 
-    } catch (error) {
+    } catch (error:any) {
         console.log("Invalid request payload: ", error)
         sendResponse(response, 400, ErrorStatusCode.ValidationError, {message: error.details[0].message});
     }

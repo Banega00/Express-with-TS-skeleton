@@ -1,7 +1,8 @@
 export enum ErrorStatusCode {
     UnknownError = 10000,
     Failure = 10002,
-    ValidationError = 10003
+    ValidationError = 10003,
+    Unauthorized = 10004
 }
 
 export enum SuccessStatusCode {
