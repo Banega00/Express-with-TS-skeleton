@@ -1,5 +1,5 @@
 import { ErrorStatusCode } from './../status-codes';
-import { assert } from "joi";
+import Joi, { assert } from "joi";
 import { sendResponse } from "../wrappers/response-wrapper";
 import { Schemes } from "./validation-schemes";
 import { Request, Response, NextFunction} from 'express';
@@ -22,7 +22,11 @@ export async function validateRequestPayload(request: Request, response: Respons
 
     } catch (error) {
         console.log("Invalid request payload: ", error)
-        sendResponse(response, 400, ErrorStatusCode.ValidationError, {message: error.details[0].message});
+        if(error instanceof Joi.ValidationError){
+            sendResponse(response, 400, ErrorStatusCode.ValidationError, {message: error.details[0].message});
+        }else{
+            sendResponse(response, 500, ErrorStatusCode.Failure);
+        }
     }
 
 }
